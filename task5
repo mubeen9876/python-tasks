@@ -1,9 +1,10 @@
-#!/use/bin/python
-import os
-pids = [pid for pid in os.listdir('/proc') if pid.isdigit()]
+#!/usr/bin/python
 
-for pid in pids:
-	try:
-		print open(os.path.join('/proc', pid, 'cmdline'),'rb').read().split('\0')
-	except IOError: #proc has already been terminated
-		continue
+from subprocess import Popen, PIPE
+
+process = Popen(['ps', '-eo', 'pid,args'], stdout=PIPE, stderr=PIPE)
+stdout, notused = process.communicate()
+for line in stdout.splitlines():
+	pid, cmdline = line.split(' ',1)
+	print line
+
