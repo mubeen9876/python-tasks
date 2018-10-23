@@ -1,0 +1,13 @@
+name = input("Please enter a number between 1-100")
+
+for name in range(2,101):
+	prime = True
+	for i in range(2,name):
+		if (name % i==0):
+			prime = False
+	if prime:
+		print(name,"is a prime number")
+		continue
+	else:
+		print(name, "is not a prime number")
+

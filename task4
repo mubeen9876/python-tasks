@@ -1,0 +1,14 @@
+#!/usr/bin/python
+
+import os
+home_folder = os.getenv('HOME')
+print (home_folder)
+
+import socket
+print(socket.gethostname())
+
+from os import environ
+print(environ['SHELL'])
+
+dir_path = os.path.dirname(os.path.realpath(__file__))
+print(dir_path)
